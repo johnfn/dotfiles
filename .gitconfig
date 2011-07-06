@@ -1,0 +1,9 @@
+[core]
+	editor = vim
+[user]
+	email = grant@causes.com
+	name = Grant Mathews
+[rebase]
+	autosquash = true
+[alias]
+  lg = log --graph --all --pretty=format:'%Cred%h%Creset - %an %Cgreen(%cr)%Creset %s%C(yellow)%d%Creset' --abbrev-commit --date=relative
