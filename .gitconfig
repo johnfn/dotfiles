@@ -1,0 +1,9 @@
+[user]
+	name = johnfn
+	email = johnfn@gmail.com
+[giggle]
+	main-window-maximized = false
+	main-window-geometry = 1145x948+94+24
+	main-window-view = FileView
+	history-view-vpane-position = 504
+	file-view-vpane-position = 509
