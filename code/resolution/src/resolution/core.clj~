@@ -1,6 +1,0 @@
-(ns resolution.core)
-; This will be initialized by res-init
-(def initial-res-state)
-
-(defmacro res-init [map]
-  `(def initial-res-state ~map))
