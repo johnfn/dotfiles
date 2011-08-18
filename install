@@ -1,0 +1,10 @@
+#/bin/bash
+
+find . -maxdepth 1 -type f -exec cp "{}" ~ \;
+
+cat ~/.bashrc | grep "PATH=\$PATH:~/"
+if [[ $? -ne 0 ]]
+then
+echo 'PATH=$PATH:~/' >> ~/.bashrc
+source ~/.bashrc
+fi
