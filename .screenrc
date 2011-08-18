@@ -1,2 +1,8 @@
+# no initial spam
 startup_message off
+
+# hardcore status line
 caption always '%{= dg} %H %{G}| %{B}%l %{G}|%=%?%{d}%-w%?%{r}(%{d}%n %t%? {%u} %?%{r})%{d}%?%+w%?%=%{G}| %{B}%M %d %c:%s '
+
+# preserve scrollback after (for example) vim
+altscreen on
