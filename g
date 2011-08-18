@@ -3,17 +3,34 @@
 WORKING_DIR = Dir.pwd.split("/").last
 MY_LOCATION = File.expand_path(__FILE__)
 
-if File.expand_path(MY_LOCATION) != File.expand_path("~/dotfiles/h") and
-  `diff #{File.expand_path MY_LOCATION} #{File.expand_path("~/dotfiles/h")}` != ""
+if File.expand_path(MY_LOCATION) != File.expand_path("~/dotfiles/g") and
+  `diff #{File.expand_path MY_LOCATION} #{File.expand_path("~/dotfiles/g")}` != ""
  
-  puts "Run ./install in ~/dotfiles."
+  puts "Out of date. Run cd ~/dotfiles && ./install && cd `pwd`."
   exit 0
 end
 
+puts "Simple script runner."
+
 if ARGV[0] == "s"
+  system "ssh-agent bash"
+  
   `ssh-add`
 end
 
+## Causes specific
+
+# Causes app
+if ARGV[0] == "cau"
+  if WORKING_DIR != "causes"
+    puts "This should be run in the causes directory."
+    exit 0
+  end
+
+  `FAST=true bundle exec mongrel_rails start -p 3062`
+end
+
+# Spin up Duckweed
 if ARGV[0] == "duck"
   if WORKING_DIR != "causes"
     puts "This should be run in the causes directory."
