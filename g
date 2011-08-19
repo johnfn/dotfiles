@@ -52,6 +52,15 @@ if ARGV[0] == "duck"
     exit 0
   end
 
+  # Smoke tests to check for important things in the config file.
+  if `cat config/local/$USER/local.rb | grep DUCKWEED_PORT` == "" or 
+     `cat config/local/$USER/local.rb | grep "^\w*BEANQ_SERVER"` == "" or
+     `cat config/local/$USER/local.rb | grep "Duckpipe.setup"` == ""
+     
+     puts "Your config (config/local/#{ENV["USER"]}) does not appear to be set up correctly"
+     exit 0
+  end
+
   threads = []
 
   `sudo redis-server /etc/redis.conf`
