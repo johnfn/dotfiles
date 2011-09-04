@@ -1,10 +1,20 @@
-#/bin/bash
+#!/bin/bash
 
 find . -maxdepth 1 -type f -exec cp "{}" ~ \;
 
-cat ~/.bashrc | grep "PATH=\$PATH:~/"
-if [[ $? -ne 0 ]]
+if [ -f "~/.bashrc" ] 
 then
-echo 'PATH=$PATH:~/' >> ~/.bashrc
-source ~/.bashrc
+  cat ~/.bashrc | grep "PATH=\$PATH:~/"
+else
+  cat ~/.bash_profile | grep "PATH=\$PATH:~/"
+fi
+
+if [[ $? -ne 0 ]]; then
+  if [ -f "~/.bashrc" ]; then
+    echo 'PATH=$PATH:~/' >> ~/.bashrc
+    source ~/.bashrc
+  else
+    echo 'PATH=$PATH:~/' >> ~/.bash_profile
+    source ~/.bash_profile
+  fi
 fi
